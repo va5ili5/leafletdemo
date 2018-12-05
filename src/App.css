@@ -1,10 +1,6 @@
 
 @import "~materialize-css/dist/css/materialize.min.css";
 
-.App {
-  text-align: center;
-}
-
 .map{
   height:800px;
 }
