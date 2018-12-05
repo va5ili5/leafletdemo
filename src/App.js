@@ -49,45 +49,45 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.loading){
+    if (this.state.loading) {
       const position = [this.state.lat, this.state.lng];
-    const notifs = this.state.station.map(x => x.notifications);
+      const notifs = this.state.station.map(x => x.notifications);
 
-    return (
-      <div className="container">
-        <div className="row">
-          {/*
+      return (
+        <div className="container">
+          <div className="row">
+            {/*
              1. initialize map. centered at bonsia coordinates and set zoom
              2. render the markers on the map
              3. on marker click display the name of the station in the popup
              4. on marker click display display the notifications of the station
-        */} 
-          <Map className="map" center={position} zoom={this.state.zoom}>
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {this.state.stations.map((station, i) => {
-              return (
-                <Marker key={i} position={[station.lat, station.lon]} onClick={() => this.showNotifications(station.id)}>
-                  <Popup><p>{station.name}</p></Popup>
-                </Marker>
-              )
-            })}
-          </Map>
+        */}
+            <Map className="map" center={position} zoom={this.state.zoom}>
+              <TileLayer
+                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {this.state.stations.map((station, i) => {
+                return (
+                  <Marker key={i} position={[station.lat, station.lon]} onClick={() => this.showNotifications(station.id)}>
+                    <Popup><p>{station.name}</p></Popup>
+                  </Marker>
+                )
+              })}
+            </Map>
+          </div>
+          <div className="row">
+            {notifs.map((notif, i) => {
+              return (<Notifications key={i} {...notif} />);
+            })
+            }
+          </div>
         </div>
-        <div className="row">
-          {notifs.map((notif, i) => {
-            return (<Notifications key={i} {...notif} />);
-          })
-          }
-        </div>
-      </div>
-    )
-    }else{
-      return(<div className="loader"></div>);
+      )
+    } else {
+      return (<div className="loader"></div>);
     }
-    
+
   }
 }
 
