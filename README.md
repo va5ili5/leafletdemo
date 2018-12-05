@@ -1,4 +1,4 @@
-A demo react application using the Leaflet javascript application
+A demo react application using the Leaflet javascript library
 
 Dependencies:
 - axios: a promise-based HTTP client to consume the API
