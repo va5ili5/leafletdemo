@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
 import axios from "axios";
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import Notifications from './Notifications';
 
 import './App.css';
+
 
 class App extends Component {
   state = {
